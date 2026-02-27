@@ -13,24 +13,26 @@ ifeq ($(OS), Darwin)
 	LINKS = libmlx.dylib
 endif
 
-HEAD = cub.h cub_struct.h get_next_line/get_next_line.h
+SRC_DIR = src/
 
-SRC = error.c fn_init_raycast.c \
-		fn_save.c init_param.c \
-		init_pos_sprite.c init_press_key.c \
-		init_texture_card_p.c main.c move.c \
-		my_mlx.c paint_background.c paint_sprite.c \
-		raycasting.c research.c shadow.c sprites.c \
-		turn.c work_of_color.c parser/init_color.c \
-		parser/no_leaks.c parser/pars_c.c \
-		parser/pars_ea.c parser/pars_f.c \
-		parser/pars_map.c parser/pars_no.c \
-		parser/pars_param.c parser/pars_r.c \
-		parser/pars_so.c parser/pars_sprite.c \
-		parser/pars_utils.c parser/pars_we.c parser/parser.c \
-		parser/search_no_wall.c get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c ft_split.c ft_substr.c\
-		fn_paint_life.c ft_itoa.c
+HEAD = $(SRC_DIR)cub.h $(SRC_DIR)cub_struct.h $(SRC_DIR)get_next_line/get_next_line.h
+
+SRC = $(SRC_DIR)error.c $(SRC_DIR)fn_init_raycast.c \
+		$(SRC_DIR)fn_save.c $(SRC_DIR)init_param.c \
+		$(SRC_DIR)init_pos_sprite.c $(SRC_DIR)init_press_key.c \
+		$(SRC_DIR)init_texture_card_p.c $(SRC_DIR)main.c $(SRC_DIR)move.c \
+		$(SRC_DIR)my_mlx.c $(SRC_DIR)paint_background.c $(SRC_DIR)paint_sprite.c \
+		$(SRC_DIR)raycasting.c $(SRC_DIR)research.c $(SRC_DIR)shadow.c $(SRC_DIR)sprites.c \
+		$(SRC_DIR)turn.c $(SRC_DIR)work_of_color.c $(SRC_DIR)parser/init_color.c \
+		$(SRC_DIR)parser/no_leaks.c $(SRC_DIR)parser/pars_c.c \
+		$(SRC_DIR)parser/pars_ea.c $(SRC_DIR)parser/pars_f.c \
+		$(SRC_DIR)parser/pars_map.c $(SRC_DIR)parser/pars_no.c \
+		$(SRC_DIR)parser/pars_param.c $(SRC_DIR)parser/pars_r.c \
+		$(SRC_DIR)parser/pars_so.c $(SRC_DIR)parser/pars_sprite.c \
+		$(SRC_DIR)parser/pars_utils.c $(SRC_DIR)parser/pars_we.c $(SRC_DIR)parser/parser.c \
+		$(SRC_DIR)parser/search_no_wall.c $(SRC_DIR)get_next_line/get_next_line.c \
+		$(SRC_DIR)get_next_line/get_next_line_utils.c $(SRC_DIR)ft_split.c $(SRC_DIR)ft_substr.c\
+		$(SRC_DIR)fn_paint_life.c $(SRC_DIR)ft_itoa.c
 
 all: $(NAME)
 
