@@ -2,6 +2,6 @@
 
 Игра с использование технологии "Raycasting"
 
-Что бы запустить проект введите в консоли MacOs - make && cub3D all_map/map.cub
+Что бы запустить проект введите в консоли make && cub3D all_map/map.cub
 
 Что бы сделать скриншот, введите make && cub3D all_map/map.cub --save
