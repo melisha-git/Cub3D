@@ -1,8 +1,17 @@
 NAME = cub3D
 
+OS := $(shell uname -s)
+
 CC = gcc -Wall -Wextra -Werror
 
-MLX = minilibx_mms/
+ifeq ($(OS), Linux)
+	MLX = minilibx_linux/
+	LINKS = libmlx.a -lXext -lX11 -lm -lbsd
+endif
+ifeq ($(OS), Darwin)
+	MLX = minilibx_mms/
+	LINKS = libmlx.dylib
+endif
 
 HEAD = cub.h cub_struct.h get_next_line/get_next_line.h
 
@@ -26,7 +35,7 @@ SRC = error.c fn_init_raycast.c \
 all: $(NAME)
 
 $(NAME): $(SRC) $(HEAD)
-	$(CC) $(SRC) -o $(NAME) libmlx.dylib
+	$(CC) $(SRC) -o $(NAME) $(LINKS)
 
 clean:
 	rm -rf Screen\ \Shot.bmp

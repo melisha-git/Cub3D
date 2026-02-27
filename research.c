@@ -32,7 +32,6 @@ int		fn_fill_sprite_arr_str(t_vars *obj, int len, int j)
 
 char	*fn_fill_sprite_arr(t_vars *obj, int len)
 {
-	int		i;
 	int		j;
 
 	if (!(obj->texture.sprite.sprite_x = (int *)malloc(sizeof(int) * (len))))
@@ -43,7 +42,6 @@ char	*fn_fill_sprite_arr(t_vars *obj, int len)
 	len = 0;
 	while (obj->fill.map[j])
 	{
-		i = 0;
 		len = fn_fill_sprite_arr_str(obj, len, j);
 		j++;
 	}

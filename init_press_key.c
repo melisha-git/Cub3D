@@ -12,37 +12,53 @@
 
 #include "cub.h"
 
-int		but_hook(int keycode)
+enum Keys
 {
-	keycode = 3;
-	system("killall afplay;afplay sound/vyjdi.mp3");
+    ESC = 0,
+	W,
+	S,
+	A,
+	D,
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+};
+
+#ifdef __linux__
+	int key_defines[] = {65307, 119, 115, 97, 100, 65362, 65364, 65363, 65361};
+#endif
+#ifdef __APPLE__
+	int key_defines[] = {53, 126, 125, 0, 2, 13, 1, 124, 123};
+#endif
+
+int		but_hook(int /* keycode */)
+{
 	exit(0);
 	return (1);
 }
 
 int		key_press(int keycode, t_vars *obj)
 {
-	if (keycode == 53)
+	if (keycode == key_defines[ESC])
 	{
-		system("killall afplay;afplay sound/vyjdi.mp3");
 		mlx_destroy_window(obj->mlx, obj->win);
 		exit(1);
 	}
-	if (keycode == 13 || keycode == 126)
+	if (keycode == key_defines[W] || keycode == key_defines[UP])
 		obj->flag.up = 1;
-	if (keycode == 1 || keycode == 125)
+	if (keycode == key_defines[S] || keycode == key_defines[DOWN])
 		obj->flag.down = 1;
-	if (keycode == 0)
+	if (keycode == key_defines[A])
 		obj->flag.left = 1;
-	if (keycode == 2)
+	if (keycode == key_defines[D])
 		obj->flag.right = 1;
-	if (keycode == 124)
+	if (keycode == key_defines[LEFT])
 		obj->flag.turn_l = 1;
-	if (keycode == 123)
+	if (keycode == key_defines[RIGHT])
 		obj->flag.turn_r = 1;
 	if (keycode == 48)
 	{
-		system("afplay sound/hit.mp3 &");
 		obj->player.life = obj->player.life - 10;
 	}
 	return (1);
@@ -50,17 +66,17 @@ int		key_press(int keycode, t_vars *obj)
 
 int		key_release(int keycode, t_vars *obj)
 {
-	if (keycode == 13 || keycode == 126)
+	if (keycode == key_defines[W] || keycode == key_defines[UP])
 		obj->flag.up = 0;
-	if (keycode == 1 || keycode == 125)
+	if (keycode == key_defines[S] || keycode == key_defines[DOWN])
 		obj->flag.down = 0;
-	if (keycode == 0)
+	if (keycode == key_defines[A])
 		obj->flag.left = 0;
-	if (keycode == 2)
+	if (keycode == key_defines[D])
 		obj->flag.right = 0;
-	if (keycode == 124)
+	if (keycode == key_defines[LEFT])
 		obj->flag.turn_l = 0;
-	if (keycode == 123)
+	if (keycode == key_defines[RIGHT])
 		obj->flag.turn_r = 0;
 	return (1);
 }

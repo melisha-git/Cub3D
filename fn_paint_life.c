@@ -20,8 +20,6 @@ void	fn_paint_life(t_vars *obj)
 	color = 0x00FF00;
 	if (obj->player.life <= 0)
 	{
-		system("killall afplay");
-		system("afplay sound/death_2.mp3 &");
 		fn_error("you lost\n");
 	}
 	if (!(life = ft_itoa(obj->player.life)))

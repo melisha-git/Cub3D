@@ -57,12 +57,10 @@ static char		*ft_fillarr(char *arr, int n, char j, int count)
 char			*ft_itoa(int n)
 {
 	char	*arr;
-	int		i;
 	int		count;
 	char	j;
 
 	j = '1';
-	i = 0;
 	count = ft_count(n);
 	if (n < 0)
 	{

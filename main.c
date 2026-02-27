@@ -12,6 +12,16 @@
 
 #include "cub.h"
 
+#if !defined(KeyPress) || !defined(KeyRelease)
+#define KeyPress 2
+#define KeyRelease 3
+#endif
+
+#if !defined(KeyPressMask) || !defined(KeyReleaseMask)
+#define KeyPressMask (1L<<0)
+#define KeyReleaseMask (1L<<1)
+#endif
+
 int		fn_pars_av(char *av)
 {
 	int		i;
@@ -34,10 +44,8 @@ void	fn_count_arg(t_vars obj, int argc, char **argv)
 		if (!(fn_raycasting(&obj)))
 			fn_error("Error : unable to allocate memory \n");
 		mlx_put_image_to_window(obj.mlx, obj.win, obj.img.img, 0, 0);
-		system("afplay sound/hello.mp3 &");
-		system("afplay sound/02567.mp3 &");
-		mlx_hook(obj.win, 2, 0L, key_press, &obj);
-		mlx_hook(obj.win, 3, 0L, key_release, &obj);
+		mlx_hook(obj.win, KeyPress, KeyPressMask, key_press, &obj);
+		mlx_hook(obj.win, KeyRelease, KeyReleaseMask, key_release, &obj);
 		mlx_hook(obj.win, 17, 0, but_hook, &obj);
 		mlx_loop_hook(obj.mlx, key_hook, &obj);
 		mlx_loop(obj.mlx);

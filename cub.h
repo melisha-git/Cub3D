@@ -19,7 +19,13 @@
 # include <math.h>
 # include "get_next_line/get_next_line.h"
 # include "cub_struct.h"
+#ifdef __linux__
+# include "minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx_int.h"
+#endif
+#ifdef __APPLE__
 # include "minilibx_mms/mlx.h"
+#endif
 
 char			*ft_itoa(int n);
 char			**ft_split(char const *s, char c);
